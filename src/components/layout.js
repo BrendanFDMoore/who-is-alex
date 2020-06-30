@@ -9,6 +9,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
+import { Container } from "nes-react";
+
 import Header from "./header"
 import "./layout.css"
 
@@ -17,16 +19,22 @@ const Layout = ({ children }) => {
     query SiteTitleQuery {
       site {
         siteMetadata {
-          title
+          title,
+          intro
         }
       }
     }
   `)
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
+    <Container>
+      <link
+        href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+        rel="stylesheet"
+      />
+      <Header intro={data.site.siteMetadata.intro} siteTitle={data.site.siteMetadata.title} />
+      {/* <Container title="With Title">Title for this one</Container> */}
+      <Container
         style={{
           margin: `0 auto`,
           maxWidth: 960,
@@ -39,8 +47,8 @@ const Layout = ({ children }) => {
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
-      </div>
-    </>
+      </Container>
+    </Container>
   )
 }
 
