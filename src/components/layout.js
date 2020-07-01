@@ -27,7 +27,7 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <Container>
+    <div>
       <link
         href="https://fonts.googleapis.com/css?family=Press+Start+2P"
         rel="stylesheet"
@@ -38,7 +38,7 @@ const Layout = ({ children }) => {
         style={{
           margin: `0 auto`,
           maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
+          padding: `1.0875rem 1.45rem`,
         }}
       >
         <main>{children}</main>
@@ -48,7 +48,7 @@ const Layout = ({ children }) => {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </Container>
-    </Container>
+    </div>
   )
 }
 
