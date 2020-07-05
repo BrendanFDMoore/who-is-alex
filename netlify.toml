@@ -13,4 +13,5 @@
   command = "npm run build"
 
   # Directory with the serverless Lambda functions to deploy to AWS.
-  # functions = "functions/"
+  functions = "built-functions"
+  functionsSource = "functions-src"

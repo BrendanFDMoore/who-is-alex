@@ -20,6 +20,9 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "concurrently": "^5.2.0",
+    "netlify-lambda": "^1.6.3",
+    "nodemon": "^2.0.4",
     "prettier": "2.0.5"
   },
   "keywords": [
@@ -28,12 +31,17 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "postbuild": "npm run build:functions",
+    "build:functions": "netlify-lambda build --config ./webpack.functions.js functions-src",
+    "develop:functions": "nodemon --watch functions-src --exec \"npm run build:functions\"",
+    "develop:gastby": "gatsby develop",
+    "develop": "concurrently --kill-others \"npm run develop:gastby\" \"npm run develop:functions\"",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "postinstall": "netlify-lambda install functions-src"
   },
   "repository": {
     "type": "git",
@@ -41,5 +49,13 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "xproxy": {
+    "/.netlify/functions": {
+      "target": "http://localhost:9000",
+      "pathRewrite": {
+        "^/\\.netlify/functions": ""
+      }
+    }
   }
 }
