@@ -1,0 +1,22 @@
+{
+  "name": "create-game",
+  "version": "1.0.0",
+  "description": "netlify functions:create - Charge a user with Stripe",
+  "main": "create-game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "netlify",
+    "serverless",
+    "apis",
+    "js"
+  ],
+  "author": "Netlify",
+  "license": "MIT",
+  "dependencies": {
+    "dayjs": "^1.8.29",
+    "faunadb": "^2.14.2",
+    "uuid": "^8.2.0"
+  }
+}
