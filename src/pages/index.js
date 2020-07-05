@@ -1,10 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 import Welcome from "../components/welcome"
 // import Image from "../components/image"
-import SEO from "../components/seo"
+import SEO from "../components/layout/seo"
 
 // import {
 //   Container,
@@ -15,7 +15,7 @@ import SEO from "../components/seo"
 const IndexPage = () => (
   <Layout>
     <div >
-      <SEO title="Test Home" />
+      <SEO title="Home" />
       <Welcome />
       {/* <p>Now wait until I do stuff with it...</p>
       <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
