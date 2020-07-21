@@ -1,6 +1,7 @@
 // import { Link } from "gatsby"
 // import PropTypes from "prop-types"
 import React, {useCallback, useState} from "react"
+import { navigate } from "gatsby"
 
 import { Button, TextInput } from "nes-react"
 
@@ -23,8 +24,9 @@ const Welcome = () => {
       console.log('error status')
       setErrorMessage('Encountered error creating game. Please try again.')
     } else {
-      const data = await response.json();
-      console.log(data)
+      const game = await response.json();
+      console.log(game)
+      navigate(`game?id=${game.uuid}`)
     }
   }, []) 
 
@@ -44,6 +46,7 @@ const Welcome = () => {
       setErrorMessage('Invalid code');
     } else {
       // redirect to games[0].uuid
+      navigate(`game?id=${games.uuid}`)
     }
   }, [gamecode]) 
 
