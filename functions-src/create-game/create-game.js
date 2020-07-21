@@ -8,7 +8,7 @@ const client = new faunadb.Client({
 })
 
 const GAMECODE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const GAMECODE_LENGTH = 1;
+const GAMECODE_LENGTH = 4;
 const generateRoomCode = () =>
   [...Array(GAMECODE_LENGTH)]
   .map(() => GAMECODE_CHARS.charAt(Math.floor(Math.random() * GAMECODE_CHARS.length)))
@@ -41,7 +41,7 @@ exports.handler = async function(event, context, callback) {
       /* Success! return the response with statusCode 200 */
       return callback(null, {
         statusCode: 200,
-        body: JSON.stringify(response)
+        body: JSON.stringify(response.data)
       })
     }).catch((error) => {
       console.log("error", error)
